@@ -2,15 +2,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
-  { label: "Services",    href: "#services"     },
-  { label: "Methodology", href: "#methodology"  },
-  { label: "Audit",       href: "#audit"        },
-  { label: "About",       href: "#about"        },
+  { label: "Services", href: "#services" },
+  { label: "Methodology", href: "#methodology" },
+  { label: "Audit", href: "#audit" },
+  { label: "Blog", href: "#/blog" },
+  { label: "About", href: "#about" },
 ];
 
 export default function Navbar() {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -27,7 +28,7 @@ export default function Navbar() {
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0,   opacity: 1 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={[
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
@@ -43,18 +44,12 @@ export default function Navbar() {
         {/* ── Logo ──────────────────────────────────────── */}
         <a
           href="/"
-          className="flex items-center gap-0.5 group select-none"
+          className="flex items-center gap-2 group select-none"
           aria-label="FoundByAnswer home"
         >
-          <span className="font-['Inter'] font-bold text-xl text-white group-hover:text-[#f59e0b] transition-colors duration-200">
-            FoundBy
-          </span>
-          <span className="font-['Inter'] font-bold text-xl text-[#f59e0b]">
-            Answer
-          </span>
-          <span className="ml-2 font-['Inter'] text-[10px] font-semibold tracking-widest uppercase text-[#f59e0b]/70 border border-[#f59e0b]/25 rounded px-1.5 py-0.5">
-            GEO
-          </span>
+          <img src="/logo.png" alt="FoundByAnswer Logo" className="h-20 w-auto object-contain" />
+
+
         </a>
 
         {/* ── Desktop nav links ──────────────────────────── */}
@@ -152,7 +147,7 @@ export default function Navbar() {
             key="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            exit={{  opacity: 0, height: 0 }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden overflow-hidden bg-[#1f2937]/98 backdrop-blur-xl border-b border-[#374151]"
           >
